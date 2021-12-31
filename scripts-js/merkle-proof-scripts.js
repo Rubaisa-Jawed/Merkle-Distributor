@@ -13,9 +13,8 @@ for (var i = 0; i < data.amount.length; i++) {
 
 //function to generate the merkle proof of a given address
 const getproof = (index, input, proof) => {
-  if (input.length === 1) {
+  if (input.length === 1)
     return proof;
-  }
 
   if (index % 2) {
     proof.push(input[index - 1]);
@@ -28,7 +27,6 @@ const getproof = (index, input, proof) => {
   for (var i = 0; i < input.length; i = i + 2) {
     output.push(ethers.utils.solidityKeccak256(["bytes32", "bytes32"], [input[i], input[i + 1]]));
   }
-
 
   return getproof(Math.floor(index / 2), output, proof);
 
@@ -61,5 +59,6 @@ const verify = (root, proof, index) => {
 
 //verify(root,wrap_get(1),1);
 module.exports = {
-  wrap_get
+  wrap_get,
+  verify
 };

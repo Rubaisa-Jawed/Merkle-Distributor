@@ -19,4 +19,8 @@ contract Greeter {
         console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
         greeting = _greeting;
     }
+
+    function testing(uint a, uint b) public pure returns(uint) {
+        return b | (1 << a);
+    }
 }

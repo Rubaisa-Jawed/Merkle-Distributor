@@ -4,6 +4,7 @@
 import {
   BaseContract,
   BigNumber,
+  BigNumberish,
   BytesLike,
   CallOverrides,
   ContractTransaction,
@@ -20,16 +21,22 @@ export interface GreeterInterface extends utils.Interface {
   functions: {
     "greet()": FunctionFragment;
     "setGreeting(string)": FunctionFragment;
+    "testing(uint256,uint256)": FunctionFragment;
   };
 
   encodeFunctionData(functionFragment: "greet", values?: undefined): string;
   encodeFunctionData(functionFragment: "setGreeting", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "testing",
+    values: [BigNumberish, BigNumberish]
+  ): string;
 
   decodeFunctionResult(functionFragment: "greet", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "setGreeting",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "testing", data: BytesLike): Result;
 
   events: {};
 }
@@ -67,6 +74,12 @@ export interface Greeter extends BaseContract {
       _greeting: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
+
+    testing(
+      a: BigNumberish,
+      b: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[BigNumber]>;
   };
 
   greet(overrides?: CallOverrides): Promise<string>;
@@ -76,10 +89,22 @@ export interface Greeter extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  testing(
+    a: BigNumberish,
+    b: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<BigNumber>;
+
   callStatic: {
     greet(overrides?: CallOverrides): Promise<string>;
 
     setGreeting(_greeting: string, overrides?: CallOverrides): Promise<void>;
+
+    testing(
+      a: BigNumberish,
+      b: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
   };
 
   filters: {};
@@ -91,6 +116,12 @@ export interface Greeter extends BaseContract {
       _greeting: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
+
+    testing(
+      a: BigNumberish,
+      b: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
   };
 
   populateTransaction: {
@@ -99,6 +130,12 @@ export interface Greeter extends BaseContract {
     setGreeting(
       _greeting: string,
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    testing(
+      a: BigNumberish,
+      b: BigNumberish,
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
   };
 }

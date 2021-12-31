@@ -18,6 +18,7 @@ async function main() {
     console.log("Merkle Distributor deployed to:", dist.address);
 
     await merk.transfer(dist.address, amount);
+    
 }
 
 main()
