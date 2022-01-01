@@ -1,31 +1,48 @@
 {
-  "name": "hardhat-project",
-  "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.3",
-    "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "chai": "^4.3.4",
-    "ethereum-waffle": "^3.4.0",
-    "ethers": "^5.5.2",
-    "hardhat": "^2.7.1"
+  "name": "@uniswap/merkle-distributor",
+  "author": {
+    "name": "Moody Salem"
   },
-  "dependencies": {
-    "@nomiclabs/hardhat-etherscan": "^2.1.8",
-    "@openzeppelin/contracts": "^4.4.1",
-    "@typechain/ethers-v5": "^8.0.5",
-    "@typechain/hardhat": "^3.0.0",
-    "@types/chai": "^4.3.0",
-    "@types/chai-as-promised": "^7.1.4",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^16.11.12",
-    "@uniswap/v2-core": "^1.0.1",
-    "@uniswap/v2-periphery": "^1.1.0-beta.0",
-    "chai-as-promised": "^7.1.1",
-    "dotenv": "^10.0.0",
-    "nodemon": "^2.0.15",
-    "solidity-coverage": "^0.7.17",
-    "ts-generator": "^0.1.1",
-    "ts-node": "^10.4.0",
-    "typechain": "^6.0.5",
-    "typescript": "^4.5.3"
+  "description": "📦 A smart contract that distributes a balance of tokens according to a merkle root",
+  "version": "1.0.1",
+  "homepage": "https://uniswap.org",
+  "keywords": [
+    "uniswap",
+    "erc20"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Uniswap/merkle-distributor"
+  },
+  "files": [
+    "build"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "3.1.0",
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "axios": "^0.20.0",
+    "chai": "^4.2.0",
+    "commander": "^6.1.0",
+    "ethereum-waffle": "^3.0.0",
+    "ethereumjs-util": "^7.0.4",
+    "mocha": "^6.2.2",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.0",
+    "solc": "0.6.11",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
+  },
+  "scripts": {
+    "precompile": "rimraf ./build/",
+    "compile": "waffle",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "generate-merkle-root": "ts-node scripts/generate-merkle-root.ts",
+    "generate-merkle-root:example": "ts-node scripts/generate-merkle-root.ts --input scripts/example.json",
+    "prepublishOnly": "yarn test"
   }
 }
