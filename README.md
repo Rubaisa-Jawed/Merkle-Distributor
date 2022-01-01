@@ -1,6 +1,20 @@
-# Merkle Distributor
+# @uniswap/merkle-distributor
 
-The Merkle distributor, pioneered by Uniswap, is more useful when you have a predefined list of addresses that should receive the tokens.</br></br>
-In the ICO model, anybody can buy the tokens. In an Airdrop model only some addresses can receive the token. The question becomes, how do we make ensure that some specific people receive the tokens?</br>
-You can send it directly to all of them. This is expensive. You can store a mapping of all the allowed addresses within your contract.</br></br>
-This is expensive for the deployer. Or you can have a merkle root within your Merkle Distributor. This approach reduces your cost for deployment while allowing the user to withdraw their airdrop tokens.
+[![Tests](https://github.com/Uniswap/merkle-distributor/workflows/Tests/badge.svg)](https://github.com/Uniswap/merkle-distributor/actions?query=workflow%3ATests)
+[![Lint](https://github.com/Uniswap/merkle-distributor/workflows/Lint/badge.svg)](https://github.com/Uniswap/merkle-distributor/actions?query=workflow%3ALint)
+
+# Local Development
+
+The following assumes the use of `node@>=10`.
+
+## Install Dependencies
+
+`yarn`
+
+## Compile Contracts
+
+`yarn compile`
+
+## Run Tests
+
+`yarn test`
